@@ -1,0 +1,11 @@
+PASSWORD STRENGTH REPORT
+-------------------------
+Password : kannan
+Score : 1/5
+Strength : Weak
+
+Suggestions:
+- Use at least 8 characters.
+- Add an uppercase letter.
+- Add a number.
+- Add a special character.
