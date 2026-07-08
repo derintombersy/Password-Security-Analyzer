@@ -1,6 +1,6 @@
 PASSWORD STRENGTH REPORT
 -------------------------
-Password : kannan
+Password : Derin 
 Score : 1/5
 Strength : Weak
 
