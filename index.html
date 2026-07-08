@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Secure Password Checker</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">
+<i class="fa-solid fa-shield-halved"></i>
+</div>
+
+<h1>Secure Password Checker</h1>
+
+<p class="subtitle">
+Analyze your password and improve your online security.
+</p>
+
+<form method="POST">
+
+<div class="password-box">
+
+<input
+id="password"
+type="password"
+name="password"
+placeholder="Enter your password"
+required>
+
+<span onclick="togglePassword()">
+
+<i id="eye" class="fa-solid fa-eye"></i>
+
+</span>
+
+</div>
+
+<button type="submit">
+
+<i class="fa-solid fa-lock"></i>
+
+Analyze Password
+
+</button>
+
+</form>
+
+{% if result %}
+
+<div class="card">
+
+<h2>Security Report</h2>
+
+<div class="progress">
+
+<div
+class="progress-bar"
+
+style="width: {{ result.percent }}%;">
+
+{{ result.percent }}%
+
+</div>
+
+</div>
+
+<div class="strength {{ result.strength|lower|replace(' ','-') }}">
+
+{{ result.strength }}
+
+</div>
+
+<div class="score">
+
+<b>Score :</b>
+
+{{ result.score }}/5
+
+</div>
+
+<h3>Password Suggestions</h3>
+
+{% if result.suggestions %}
+
+<ul>
+
+{% for item in result.suggestions %}
+
+<li>
+
+<i class="fa-solid fa-circle-exclamation"></i>
+
+{{ item }}
+
+</li>
+
+{% endfor %}
+
+</ul>
+
+{% else %}
+
+<div class="good">
+
+<i class="fa-solid fa-circle-check"></i>
+
+Excellent Password!
+
+</div>
+
+{% endif %}
+
+</div>
+
+{% endif %}
+
+<div class="generator">
+
+<h2>
+
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+
+Suggested Strong Password
+
+</h2>
+
+<div class="generated">
+
+<input
+id="generated"
+type="text"
+value="{{ generated_password }}"
+readonly>
+
+<button
+type="button"
+onclick="copyPassword()">
+
+Copy
+
+</button>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+Developed by <b>Kannan Ravindran</b>
+
+</div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+
+</html>
